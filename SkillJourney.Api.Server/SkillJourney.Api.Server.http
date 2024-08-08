@@ -1,0 +1,6 @@
+### @SkillJourney.Api.Server_HostAddress = http://localhost:5008
+
+### GET {{SkillJourney.Api.Server_HostAddress}}/weatherforecast/
+### Accept: application/json
+
+### I'm pretty sure this is supposed to be a config file to help test, but I'm not sure how to use it yet

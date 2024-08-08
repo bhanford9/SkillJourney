@@ -1,0 +1,46 @@
+#ignore nuget.config files
+nuget.config
+
+#ignore thumbnails created by windows
+Thumbs.db
+
+#ignore files created by Git Merge conflicts
+*.orig
+
+#Ignore files build by Visual Studio
+*.obj
+*.exe
+*.pdb
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+[Bb]in
+[Dd]ebug*/
+*.lib
+*.sbr
+obj/
+/[Rr]elease*/
+_ReSharper*/
+*[Tt]est[Rr]esult*
+*.vssettings
+.vs/
+.vscode/
+*.sln.startup.json
+
+#Ignore files created by NuGet
+Source/packages
+ExternalSource/**/packages
+
+#ignore MS Office Suite temp files
+~$*

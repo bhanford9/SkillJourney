@@ -1,0 +1,115 @@
+﻿@inherits ComponentBase
+@page "/developer-user/{id:guid}"
+
+<MudStack Class="pb-8">
+    <MudStack Row Class="pl-12 pb-1 mud-theme-primary">
+        <MudAvatar Color="Color.Secondary" Class="mt-6" Size="Size.Large">@User?.Name.First()</MudAvatar>
+        <MudStack Class="mt-4">
+            <MudText Typo="Typo.h4">@User?.Name</MudText>
+            <MudText Typo="Typo.h6">@User?.Title.Name</MudText>
+        </MudStack>
+    </MudStack>
+
+    <MudContainer Class="d-flex gap-8 flex-wrap">
+        <MudCard Class="d-flex flex-column">
+            <MudCardContent Class="pa-0">
+                <MudStack Class="mx-0 py-2 px-2 mud-theme-tertiary rounded-t" Row>
+                    <MudText Typo="Typo.h5">Permissions</MudText>
+                    <MudSpacer />
+                    <MudButton Color="Color.Secondary" Variant="Variant.Filled">Save</MudButton>
+                </MudStack>
+                <MudSimpleTable Class="rounded-0" Dense="true" FixedHeader="true" Elevation="0">
+                    <thead>
+                        <tr>
+                            <th class="shrink">
+                                <MudText Class="header">Deprecated</MudText>
+                            </th>
+                            <th class="expand permission-column">
+                                <MudText Class="header">Permission</MudText>
+                            </th>
+                            <th class="shrink">
+                                <MudText Class="header">Remove</MudText>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var permission in User?.Permissions ?? [])
+                        {
+                            <tr>
+                                <td class="shrink">
+                                    <MudCheckBox Disabled="true" Color="Color.Primary" @bind-Value="@permission.IsDeprecated" />
+                                </td>
+                                <td class="expand permission-column">
+                                    <MudText>@permission.Name</MudText>
+                                </td>
+                                <td class="shrink">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                                   Color="Color.Error"
+                                                   aria-label="delete"
+                                                   Width="30px" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </MudSimpleTable>
+            </MudCardContent>
+            <MudPaper Class="rounded-0 d-flex flex-grow-0 justify-center border-t">
+                <MudButton Color="Color.Primary">Add Permission</MudButton>
+            </MudPaper>
+        </MudCard>
+
+        <MudCard Class="d-flex flex-column">
+            <MudCardContent Class="pa-0 flex-grow-1">
+                <MudStack Class="mx-0 py-2 px-2 mud-theme-tertiary rounded-t" Row>
+                    <MudText Typo="Typo.h5">Highlights</MudText>
+                    <MudSpacer />
+                    <MudButton Color="Color.Secondary" Variant="Variant.Filled">Save</MudButton>
+                </MudStack>
+                <MudSimpleTable Class="rounded-0" Dense="true" FixedHeader="true" Elevation="0">
+                    <thead>
+                        <tr>
+                            <th class="expand">
+                                <MudText Class="header">Description</MudText>
+                            </th>
+                            <th class="shrink">
+                                <MudText Class="header">Date</MudText>
+                            </th>
+                            <th class="shrink">
+                                <MudText Class="header">Rating</MudText>
+                            </th>
+                            <th class="shrink">
+                                <MudText Class="header">Remove</MudText>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var highlight in User?.Highlights ?? [])
+                        {
+                            <tr>
+                                <td class="expand">
+                                    <MudText>@highlight.Description.Substring(0, 20)</MudText>
+                                </td>
+                                <td class="shrink">
+                                    <MudText>@highlight.DateOfOccurrence</MudText>
+                                </td>
+                                <td class="shrink">
+                                    <MudText>@highlight.SignificanceRating</MudText>
+                                </td>
+                                <td class="shrink">
+                                    <MudIconButton Icon="@Icons.Material.Filled.Delete"
+                                                   Color="Color.Error"
+                                                   aria-label="delete"
+                                                   Width="30px" />
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </MudSimpleTable>
+            </MudCardContent>
+            <MudSpacer />
+            <MudPaper Class="rounded-0 d-flex flex-grow-0 justify-center border-t">
+                <MudButton Color="Color.Primary">Add Highlight</MudButton>
+            </MudPaper>
+        </MudCard>
+    </MudContainer>
+</MudStack>

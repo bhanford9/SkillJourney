@@ -1,0 +1,16 @@
+﻿@inherits ComponentBase
+
+<MudDialog>
+  <TitleContent>
+    Add Highlight
+  </TitleContent>
+  <DialogContent>
+        <MudDatePicker Label="Date of Occurrence" @bind-Date="@ViewModel.DateOfOccurrence" Placeholder="Select Date" ShowToolbar="false" />
+        <MudTextField T="string" Label="Description" Variant="Variant.Text" @bind-Text="@ViewModel.Description" AutoGrow MaxLines="4"/>
+        <MudTextField @bind-Value="@ViewModel.SignificanceRating" Label="Significance Rating"/>
+    </DialogContent>
+    <DialogActions>
+        <MudButton OnClick="Cancel">Cancel</MudButton>
+        <MudButton Color="Color.Primary" OnClick="Submit">Ok</MudButton>
+    </DialogActions>
+</MudDialog>

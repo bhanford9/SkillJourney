@@ -1,0 +1,34 @@
+﻿@using SkillJourney.ViewModels.SkillRatings
+@inherits ComponentBase
+
+<MudContainer MaxWidth="@MaxWidth.Medium">
+    <MudDataGrid Items="@ViewModel.SkillRatings"
+                 MultiSelection="true"
+                 Filterable="true"
+                 Hideable="true"
+                 Groupable="true"
+                 Dense="true"
+                 ShowMenuIcon="true">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Skill Ratings</MudText>
+            <MudSpacer />
+        </ToolBarContent>
+        @* can't seem to get the grouping feature to work *@
+        <Columns>
+            <HierarchyColumn T="ISkillRatingViewModel" />
+            <PropertyColumn Property="x => x.Name" Groupable="false" />
+            <PropertyColumn Property="x => x.BusinessArea" Title="Business Area" />
+            <PropertyColumn Property="x => x.SkillField" Title="Skill Field" />
+            <PropertyColumn Property="x => x.SkillCategory" Title="Skill Category" />
+            <PropertyColumn Property="x => x.Value" Title="Numeric Rating" />
+            <PropertyColumn Property="x => x.IsObsolete" Title="Obsolete" />
+        </Columns>
+        <ChildRowContent>
+            <MudCard>
+                <MudCardContent>
+                    <MudText>@context.Item.Description</MudText>
+                </MudCardContent>
+            </MudCard>
+        </ChildRowContent>
+    </MudDataGrid>
+</MudContainer>

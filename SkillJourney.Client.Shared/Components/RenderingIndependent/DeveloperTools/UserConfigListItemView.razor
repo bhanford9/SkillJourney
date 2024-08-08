@@ -1,0 +1,15 @@
+﻿@inherits ComponentBase
+@inject NavigationManager NavManager
+
+<MudStack Row>
+    <MudAvatar Color="Color.Secondary">@ViewModel.User.Name.First()</MudAvatar>
+    <MudText Class="ml-3 align-self-center" Typo="Typo.h6">@ViewModel.User.Name</MudText>
+    <MudText Class="align-self-center ml-2" Typo="Typo.subtitle1">@ViewModel.User.Title.Name</MudText>
+    <MudSpacer/>
+    <MudButton Variant="Variant.Filled"
+               Class="align-self-center"
+               Color="Color.Tertiary"
+               OnClick="(e) => GoToUserConfigPage()">
+        Edit User
+    </MudButton>
+</MudStack>

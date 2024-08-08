@@ -1,0 +1,8 @@
+﻿@inherits ComponentBase
+@inject NavigationManager NavManager
+
+<MudStack Row>
+    <MudText Class="align-self-center" Typo="Typo.h6">@ViewModel.Permission.Name</MudText>
+    <MudSpacer />
+    <MudCheckBox @bind-Value="@ViewModel.Permission.IsDeprecated"  Label="Deprecated" Color="Color.Secondary"/>
+</MudStack>

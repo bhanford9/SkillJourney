@@ -1,0 +1,8 @@
+﻿@* @using SkillJourney.Client.Shared.Components.RenderingIndependent
+<Router AppAssembly="typeof(App).Assembly" AdditionalAssemblies="new[] { typeof(MainPage).Assembly }">
+    <Found Context="routeData">
+        <RouteView RouteData="routeData" DefaultLayout="@(typeof(MainLayout))" />
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+</Router>
+ *@

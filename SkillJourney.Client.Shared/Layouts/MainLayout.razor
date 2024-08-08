@@ -1,0 +1,21 @@
+﻿@using SkillJourney.Client.Shared.Components.RenderingIndependent
+@using SkillJourney.ViewModels
+@inherits LayoutComponentBase
+@inject IRenderModeViewModel MyRenderMode
+
+@* We can provide theme customization and toggle dark/light
+   Documentation here: https://mudblazor.com/customization/overview#custom-themes
+*@
+
+<MudThemeProvider IsDarkMode="true" />
+<HeaderSideBar @rendermode="@MyRenderMode.ComponentRenderMode" />
+<MudMainContent>
+    @Body
+</MudMainContent>
+
+
+<div id="blazor-error-ui">
+    An unhandled error has occurred.
+    <a href="" class="reload">Reload</a>
+    <a class="dismiss">🗙</a>
+</div>

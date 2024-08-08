@@ -1,0 +1,26 @@
+﻿.permission-column {
+  min-width: 200px !important;
+}
+
+thead {
+  height: 30px !important;
+}
+
+th {
+  margin: 2px 8px !important;
+  padding: 0px 8px !important;
+  align-content: flex-end;
+}
+
+td {
+  margin: 0px 8px !important;
+  padding: 0px 8px !important;
+}
+
+table td.shrink {
+  white-space: nowrap
+}
+
+table td.expand {
+  width: 99%
+}

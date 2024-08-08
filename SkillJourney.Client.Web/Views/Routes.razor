@@ -1,0 +1,13 @@
+﻿@using SkillJourney.Client.Shared.Components.RenderingIndependent
+@using SkillJourney.ViewModels
+@using SkillJourney.ViewModels.Users
+
+<Router AppAssembly="typeof(Program).Assembly" AdditionalAssemblies="new[] { typeof(MainPage).Assembly }">
+    <Found Context="routeData">
+        <RouteView RouteData="routeData" DefaultLayout="typeof(MainLayout)" />
+        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+      <h1>Something is Wrong</h1>
+    </NotFound>
+</Router>

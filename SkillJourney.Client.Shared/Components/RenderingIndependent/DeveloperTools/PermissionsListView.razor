@@ -1,0 +1,22 @@
+﻿@using SkillJourney.ViewModels.DeveloperTools
+@inherits ComponentBase
+@page "/developer-permissions"
+
+<MudStack>
+    <MudText class="pl-12 py-2 mud-theme-primary" Typo="Typo.h3">Permissions</MudText>
+    <MudContainer Class="d-flex justify-center">
+        <MudStack Row Class="d-flex flex-shrink-1">
+            <MudSimpleTable Dense="true">
+                <tbody>
+                    @foreach (var permission in ViewModel.Permissions)
+                    {
+                        <tr>
+                            <td><PermissionListItemView ViewModel="@permission" /></td>
+                        </tr>
+                    }
+                </tbody>
+            </MudSimpleTable>
+            <MudButton Class="flex-shrink-1 align-self-start" Variant="Variant.Filled" Color="Color.Tertiary" OnClick="ViewModel.SavePermissions">Save</MudButton>
+        </MudStack>
+    </MudContainer>
+</MudStack>

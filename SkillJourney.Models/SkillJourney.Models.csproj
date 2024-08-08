@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="SkillMeasures\SoftwareEngineering\Management\" />
+    <Folder Include="SkillMeasures\SoftwareEngineering\Engineering\" />
+    <Folder Include="SkillMeasures\SoftwareEngineering\Business\" />
+    <Folder Include="SkillMeasures\UserExperience\Discipline\" />
+    <Folder Include="SkillMeasures\UserExperience\Consulting\" />
+    <Folder Include="SkillMeasures\UserExperience\Leadership\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SkillJourney.Api.Client\SkillJourney.Api.Client.csproj" />
+    <ProjectReference Include="..\SkillJourney.PermissionsEngine\SkillJourney.PermissionsEngine.csproj" />
+  </ItemGroup>
+
+</Project>

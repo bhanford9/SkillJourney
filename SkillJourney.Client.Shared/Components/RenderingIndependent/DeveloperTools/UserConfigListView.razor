@@ -1,0 +1,21 @@
+﻿@using SkillJourney.ViewModels.DeveloperTools
+@inherits ComponentBase
+@page "/developer-users"
+
+<MudStack>
+    <MudText class="pl-12 py-2 mud-theme-primary" Typo="Typo.h3">User Configurations</MudText>
+    <MudContainer Class="d-flex justify-center">
+        <MudPaper Class="flex-shrink-1">
+            <MudSimpleTable Dense="true">
+                <tbody>
+                    @foreach (var user in ViewModel.Users)
+                    {
+                        <tr>
+                            <td><UserConfigListItemView ViewModel="@user" /></td>
+                        </tr>
+                    }
+                </tbody>
+            </MudSimpleTable>
+        </MudPaper>
+    </MudContainer>
+</MudStack>

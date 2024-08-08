@@ -1,0 +1,11 @@
+﻿@if (ServerStateViewModel.IsConnected && CurrentUserViewModel.IsLoggedIn)
+{
+    <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" Centered="true" PanelClass="pa-10">
+        <MudTabPanel Text="Skill Ratings">
+            <SkillRatingListView />
+        </MudTabPanel>
+        <MudTabPanel Text="User Notable Highlights">
+            <NotableHighlightsListView />
+        </MudTabPanel>
+    </MudTabs>
+}

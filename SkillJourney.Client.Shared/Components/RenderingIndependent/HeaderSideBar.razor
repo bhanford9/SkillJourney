@@ -1,0 +1,23 @@
+﻿@using SkillJourney.ViewModels
+
+@if (AppStateViewModel.AppIsReadyToUse)
+{
+    <MudAppBar>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu"
+                       Color="Color.Inherit"
+                       Edge="Edge.Start"
+                       OnClick="@((e) => ViewModel.DrawerToggle())" />
+        Skill Journey
+    </MudAppBar>
+
+    <MudDrawer @bind-Open="@ViewModel.DrawerOpen" Elevation="2" Variant="@DrawerVariant.Temporary">
+        <MudNavMenu Dense="true" Rounded="true" Margin="Margin.Dense">
+            <MudNavLink Href="/" Icon="@Icons.Material.Filled.Dashboard" Match="NavLinkMatch.All">Dashboard</MudNavLink>
+            <MudNavGroup Title="Developer Tools" Icon="@Icons.Material.Filled.Hardware" Expanded="true" Class="@(ViewModel.CanAccessDevTools ? "" : "d-none")">
+                <MudNavLink Href="/developer-users" Icon="@Icons.Material.Filled.PeopleAlt" Match="NavLinkMatch.Prefix">Users</MudNavLink>
+                <MudNavLink Href="/developer-permissions" Icon="@Icons.Material.Filled.LockPerson" Match="NavLinkMatch.Prefix">Permissions</MudNavLink>
+            </MudNavGroup>
+            <MudNavLink Href="/employees" Icon="@Icons.Material.Filled.EmojiPeople" Match="NavLinkMatch.Prefix">Employees</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+}
