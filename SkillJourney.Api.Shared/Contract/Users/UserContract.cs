@@ -4,8 +4,6 @@ using SkillJourney.Api.Shared.Contract.Permissions;
 
 namespace SkillJourney.Api.Shared.Contract.Users;
 
-public record UserSubContract(Guid Id, string Name, Guid TitleId);
-
 public record UserContract(
     Guid Id,
     string Name,

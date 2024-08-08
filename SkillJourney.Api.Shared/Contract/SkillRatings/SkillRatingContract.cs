@@ -4,16 +4,6 @@ using SkillJourney.Api.Shared.Contract.SkillFields;
 
 namespace SkillJourney.Api.Shared.Contract.SkillRatings;
 
-public record SkillRatingSubContract(
-    Guid Id,
-    string Name,
-    string Description,
-    Guid BusinessArea,
-    Guid SkillField,
-    Guid SkillCategory,
-    int Value,
-    bool IsObsolete);
-
 public record SkillRatingContract(
     Guid Id,
     string Name,

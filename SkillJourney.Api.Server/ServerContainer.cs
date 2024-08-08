@@ -22,8 +22,7 @@ public static class ServerContainer
         .AddSingleton<INotableHighlightRelatedSkillContractBuilder, NotableHighlightRelatedSkillContractBuilder>()
         .AddSingleton<IUserContractBuilder, UserContractBuilder>()
         .AddSingleton<IPermissionContractBuilder, PermissionContractBuilder>()
-        .AddSingleton<IOccupationalTitleContractBuilder, OccupationalTitleContractBuilder>()
-        .AddSingleton<IContractBuilderProvider, ContractBuilderProvider>();
+        .AddSingleton<IOccupationalTitleContractBuilder, OccupationalTitleContractBuilder>();
 
     private static IServiceCollection InitializeControllers(this IServiceCollection container) => container
         .AddSingleton<ISkillRatingController, SkillRatingController>()

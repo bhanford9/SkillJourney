@@ -1,5 +1,4 @@
-﻿using SkillJourney.Api.Server.ContractBuilders;
-using SkillJourney.Api.Server.Controllers;
+﻿using SkillJourney.Api.Server.Controllers;
 using SkillJourney.Api.Shared.Contract.Users;
 
 namespace SkillJourney.Api.Server.Apis;
@@ -13,35 +12,18 @@ public interface IUsersApi
 
 public class UsersApi : IUsersApi
 {
-    private readonly IControllerProvider controllers;
-    private readonly IContractBuilderProvider contractBuilders;
+    private readonly IUserController userController;
     private readonly INotableHighlightsApi notableHighlightsApi;
 
-    public UsersApi(
-        IControllerProvider controllerProvider,
-        IContractBuilderProvider contractBuilderProvider,
-        INotableHighlightsApi notableHighlightsApi)
+    public UsersApi(IUserController userController, INotableHighlightsApi notableHighlightsApi)
     {
-        this.controllers = controllerProvider;
-        this.contractBuilders = contractBuilderProvider;
+        this.userController = userController;
         this.notableHighlightsApi = notableHighlightsApi;
     }
 
-    public async Task<IReadOnlyList<UserContract>> GetAllUsers()
-        => await Task.WhenAll(controllers.User
-            .GetAllUsers()
-            .Select(BuildFullContract));
+    public async Task<IReadOnlyList<UserContract>> GetAllUsers() => await Task.FromResult(userController.GetAllUsers());
 
-    public Task<UserContract> GetUserById(Guid id)
-        => BuildFullContract(controllers.User.GetUserById(id));
+    public Task<UserContract> GetUserById(Guid id) => Task.FromResult(userController.GetUserById(id));
 
-    public Task<UserContract> GetDevUser()
-        => BuildFullContract(controllers.User.GetDevUser());
-
-    private async Task<UserContract> BuildFullContract(UserSubContract user)
-        => contractBuilders.User.BuildContract(
-            user,
-            controllers.OccupationalTitle.FromId(user.TitleId),
-            await notableHighlightsApi.GetHighlightsForUser(user.Id),
-            controllers.Permission.GetPermissions(user.Id, user.TitleId));
+    public Task<UserContract> GetDevUser() => Task.FromResult(userController.GetDevUser());
 }

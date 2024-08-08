@@ -1,11 +1,5 @@
 ﻿namespace SkillJourney.Api.Shared.Contract.NotableHighlights;
 
-public record NotableHighlightSubContract(
-    Guid Id,
-    int SignificanceRating,
-    string Description,
-    DateTime DateOfOccurrence);
-
 public record NotableHighlightContract(
     Guid Id,
     IReadOnlyList<NotableHighlightRelatedSkillContract> RelatedSkills,

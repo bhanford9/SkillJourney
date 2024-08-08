@@ -6,10 +6,10 @@ namespace SkillJourney.Api.Server.Controllers;
 
 public interface INotableHighlightController
 {
-    NotableHighlightSubContract FromId(Guid id);
-    IReadOnlyList<NotableHighlightSubContract> GetUserHighlights(Guid userId);
-    NotableHighlightSubContract AddHighlight(AddNotableHighlightContract addNotableHighlightContract);
-    IReadOnlyList<NotableHighlightRelatedSkillSubContract> GetRelatedSkills(Guid highlight);
+    NotableHighlightContract FromId(Guid id);
+    IReadOnlyList<NotableHighlightContract> GetUserHighlights(Guid userId);
+    NotableHighlightContract AddHighlight(AddNotableHighlightContract addNotableHighlightContract);
+    IReadOnlyList<NotableHighlightRelatedSkillContract> GetRelatedSkills(Guid highlight);
 }
 
 public class NotableHighlightController : INotableHighlightController
@@ -17,36 +17,48 @@ public class NotableHighlightController : INotableHighlightController
     private readonly INotableHighlightsDatabaseApi notableHighlightsDatabaseApi;
     private readonly INotableHighlightContractBuilder notableHighlightContractBuilder;
     private readonly INotableHighlightRelatedSkillContractBuilder notableHighlightRelatedSkillContractBuilder;
+    private readonly ISkillRatingController skillRatingController;
 
     public NotableHighlightController(
         INotableHighlightsDatabaseApi notableHighlightsDatabaseApi,
         INotableHighlightContractBuilder notableHighlightContractBuilder,
-        INotableHighlightRelatedSkillContractBuilder notableHighlightRelatedSkillContractBuilder)
+        INotableHighlightRelatedSkillContractBuilder notableHighlightRelatedSkillContractBuilder,
+        ISkillRatingController skillRatingController)
     {
         this.notableHighlightsDatabaseApi = notableHighlightsDatabaseApi;
         this.notableHighlightContractBuilder = notableHighlightContractBuilder;
         this.notableHighlightRelatedSkillContractBuilder = notableHighlightRelatedSkillContractBuilder;
+        this.skillRatingController = skillRatingController;
     }
 
-    public IReadOnlyList<NotableHighlightSubContract> GetUserHighlights(Guid userId) => notableHighlightsDatabaseApi
+    public IReadOnlyList<NotableHighlightContract> GetUserHighlights(Guid userId) => notableHighlightsDatabaseApi
         .GetHighlightsForUser(userId)
-        .Select(notableHighlightContractBuilder.BuildSubContract)
+        .Select(BuildContract)
         .ToList();
 
-    public NotableHighlightSubContract AddHighlight(AddNotableHighlightContract addNotableHighlightContract)
-        => notableHighlightContractBuilder.BuildSubContract(notableHighlightsDatabaseApi.AddHighlight(
+    public NotableHighlightContract AddHighlight(AddNotableHighlightContract addNotableHighlightContract)
+        => BuildContract(notableHighlightsDatabaseApi.AddHighlight(
             addNotableHighlightContract.ReceivingUser,
             addNotableHighlightContract.SignificanceRating,
             addNotableHighlightContract.Description,
             addNotableHighlightContract.DateOfOccurrence,
             addNotableHighlightContract.RelatedSkillRatings));
 
-    public NotableHighlightSubContract FromId(Guid id)
-        => notableHighlightContractBuilder.BuildSubContract(notableHighlightsDatabaseApi.GetHighlightById(id));
+    public NotableHighlightContract FromId(Guid id) => BuildContract(notableHighlightsDatabaseApi.GetHighlightById(id));
 
-    public IReadOnlyList<NotableHighlightRelatedSkillSubContract> GetRelatedSkills(Guid highlight)
+    public IReadOnlyList<NotableHighlightRelatedSkillContract> GetRelatedSkills(Guid highlight)
         => notableHighlightsDatabaseApi
         .GetHighlightRelatedSkills(highlight)
-        .Select(notableHighlightRelatedSkillContractBuilder.BuildSubContract)
+        .Select(BuildContract)
         .ToList();
+
+    private NotableHighlightRelatedSkillContract BuildContract(INotableHighlightRelatedSkillEntry entry)
+        => notableHighlightRelatedSkillContractBuilder.BuildContract(
+            entry,
+            skillRatingController.GetRatingById(entry.RelatedSkill));
+
+    private NotableHighlightContract BuildContract(INotableHighlightEntry entry)
+        => notableHighlightContractBuilder.BuildContract(
+            entry,
+            GetRelatedSkills(entry.Id));
 }

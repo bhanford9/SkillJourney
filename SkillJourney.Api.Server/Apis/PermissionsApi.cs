@@ -1,5 +1,4 @@
-﻿using SkillJourney.Api.Server.ContractBuilders;
-using SkillJourney.Api.Server.Controllers;
+﻿using SkillJourney.Api.Server.Controllers;
 using SkillJourney.Api.Shared.Contract.Permissions;
 
 namespace SkillJourney.Api.Server.Apis;
@@ -15,15 +14,8 @@ public interface IPermissionsApi
 public class PermissionsApi : IPermissionsApi
 {
     private readonly IPermissionController permissionController;
-    private readonly IPermissionContractBuilder permissionContractBuilder;
 
-    public PermissionsApi(
-        IPermissionController permissionController,
-        IPermissionContractBuilder permissionContractBuilder)
-    {
-        this.permissionController = permissionController;
-        this.permissionContractBuilder = permissionContractBuilder;
-    }
+    public PermissionsApi(IPermissionController permissionController) => this.permissionController = permissionController;
 
     public Task<PermissionContract> GetDevUserPermission() => Task.FromResult(permissionController.GetDevUserPermission());
 

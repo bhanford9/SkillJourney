@@ -9,28 +9,16 @@ namespace SkillJourney.Api.Server.ContractBuilders;
 public interface ISkillRatingContractBuilder
 {
     SkillRatingContract BuildContract(
-        SkillRatingSubContract skillRating,
+        ISkillRatingEntry skillRating,
         BusinessAreaContract businessArea,
         SkillFieldContract skillField,
         SkillCategoryContract skillCategory);
-    SkillRatingSubContract BuildSubContract(ISkillRatingEntry rating);
 }
 
 public class SkillRatingContractBuilder : ISkillRatingContractBuilder
 {
-    public SkillRatingSubContract BuildSubContract(ISkillRatingEntry rating)
-    => new(
-        rating.Id,
-        rating.Name,
-        rating.Description,
-        rating.BusinessArea,
-        rating.SkillField,
-        rating.SkillCategory,
-        rating.Value,
-        rating.IsObsolete);
-
     public SkillRatingContract BuildContract(
-        SkillRatingSubContract skillRating,
+        ISkillRatingEntry skillRating,
         BusinessAreaContract businessArea,
         SkillFieldContract skillField,
         SkillCategoryContract skillCategory) => new(

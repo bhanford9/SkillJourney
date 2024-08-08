@@ -22,6 +22,7 @@ public class SkillFieldController : ISkillFieldController
         this.skillFieldContractBuilder = skillFieldContractBuilder;
     }
 
-    public SkillFieldContract FromId(Guid id) => skillFieldContractBuilder.BuildContract(skillCategorysDatabaseApi.GetSkillFieldById(id));
+    public SkillFieldContract FromId(Guid id)
+        => skillFieldContractBuilder.BuildContract(skillCategorysDatabaseApi.GetSkillFieldById(id));
 
 }
