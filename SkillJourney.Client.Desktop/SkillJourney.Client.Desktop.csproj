@@ -18,10 +18,4 @@
     <ProjectReference Include="..\SkillJourney.Client.Shared\SkillJourney.Client.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Content Update="Routes.razor">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-    </Content>
-  </ItemGroup>
-
 </Project>

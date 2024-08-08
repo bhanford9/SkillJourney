@@ -1,8 +1,15 @@
-﻿@* @using SkillJourney.Client.Shared.Components.RenderingIndependent
+﻿@inherits ComponentBase
+
+<MudDialogProvider />
+<MudSnackbarProvider />
+
 <Router AppAssembly="typeof(App).Assembly" AdditionalAssemblies="new[] { typeof(MainPage).Assembly }">
     <Found Context="routeData">
         <RouteView RouteData="routeData" DefaultLayout="@(typeof(MainLayout))" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
+    <NotFound>
+      My Custom Not Found Message
+    </NotFound>
 </Router>
- *@
+

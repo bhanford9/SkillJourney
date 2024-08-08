@@ -14,9 +14,7 @@
             <MudText Typo="Typo.h6">Notable Highlights</MudText>
             <MudSpacer />
         </ToolBarContent>
-        @* can't seem to get the grouping feature to work *@
         <Columns>
-            <HierarchyColumn T="INotableHighlightViewModel" />
             <PropertyColumn Property="x => x.DateOfOccurrence" Groupable="false" Title="Date of Occurrence" />
             <PropertyColumn Property="x => x.SignificanceRating" Title="Significance Rating" />
             <PropertyColumn Property="x => x.Description" Groupable="false" />

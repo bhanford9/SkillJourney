@@ -3,18 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:components="clr-namespace:SkillJourney.Client.Desktop.Components"
+        xmlns:local="clr-namespace:SkillJourney.Client.Desktop"
         xmlns:blazor="http://schemas.microsoft.com/winfx/2006/xaml/presentation/blazor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-        <!--xmlns:layouts="clr-namespace:SkillJourney.Client.Shared.Components.RenderingIndependent.Layouts;assembly=SkillJourney.Client.Shared"-->
+        Title="MainWindow" Height="600" Width="1200">
   <Grid>
     <blazor:BlazorWebView
       Services="{DynamicResource services}"
       HostPage="wwwroot\index.html">
       <blazor:BlazorWebView.RootComponents>
-        <blazor:RootComponent Selector="#app" ComponentType="{x:Type components:DesktopRouting}" />
-        <!--<blazor:RootComponent Selector="#layout" ComponentType="{x:Type layouts:MainLayout}" />-->
+        <blazor:RootComponent Selector="#app" ComponentType="{x:Type local:Routes}" />
       </blazor:BlazorWebView.RootComponents>
     </blazor:BlazorWebView>
   </Grid></Window>

@@ -2,7 +2,6 @@ using CommunityToolkit.Mvvm.Messaging;
 using MudBlazor.Services;
 using SkillJourney.Client.Shared.Components.RenderingIndependent;
 using SkillJourney.Client.Web;
-using SkillJourney.Client.Web.Views;
 using SkillJourney.ViewModels;
 
 var builder = WebApplication.CreateBuilder(args);
