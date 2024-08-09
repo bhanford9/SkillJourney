@@ -16,6 +16,11 @@ internal class ClientDesktopContainer
             .AddHttpClient()
             .AddSingleton<IRenderModeViewModel, RenderModeViewModel>()
             .AddTransient<IMessenger>(_ => WeakReferenceMessenger.Default); // using weak for simplicity
+
+#if DEBUG
+        serviceCollection.AddBlazorWebViewDeveloperTools(); // use F12 or Ctrl+Shift+I to use in app
+#endif
+
         return serviceCollection.InitializeSharedContainer();
     }
 }
