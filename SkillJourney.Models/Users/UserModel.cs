@@ -19,12 +19,14 @@ internal class UserModel : IUserModel
         Guid id,
         string name,
         IOccupationalTitleModel occupationalTitle,
-        IReadOnlyList<IPermissionModel> permissions)
+        IReadOnlyList<IPermissionModel> permissions,
+        IReadOnlyList<INotableHighlightModel> highlights)
     {
         Id = id;
         Name = name;
         OccupationalTitle = occupationalTitle;
         Permissions = permissions;
+        Highlights = highlights;
     }
 
     public Guid Id { get; set; }

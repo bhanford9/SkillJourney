@@ -17,17 +17,20 @@ internal class UsersAdapter : IUsersAdapter
     private readonly IUsersClient usersClient;
     private readonly IOccupationalTitlesAdapter occupationalTitlesAdapter;
     private readonly IPermissionsAdapter permissionsAdapter;
+    private readonly INotableHighlightsAdapter notableHighlightsAdapter;
 
     public UsersAdapter(
         IUserFactory usersFactory,
         IUsersClient usersClient,
         IOccupationalTitlesAdapter occupationalTitlesAdapter,
-        IPermissionsAdapter permissionsAdapter)
+        IPermissionsAdapter permissionsAdapter,
+        INotableHighlightsAdapter notableHighlightsAdapter)
     {
         this.usersFactory = usersFactory;
         this.usersClient = usersClient;
         this.occupationalTitlesAdapter = occupationalTitlesAdapter;
         this.permissionsAdapter = permissionsAdapter;
+        this.notableHighlightsAdapter = notableHighlightsAdapter;
     }
 
     public async Task<IUserModel> DebugLogin() => ToModel(await usersClient.GetDevUser());
@@ -41,5 +44,6 @@ internal class UsersAdapter : IUsersAdapter
             user.Id,
             user.Name,
             occupationalTitlesAdapter.ToModel(user.OccupationalTitle),
-            user.Permissions.Select(permissionsAdapter.ToModel).ToList());
+            user.Permissions.Select(permissionsAdapter.ToModel).ToList(),
+            user.Highlights.Select(notableHighlightsAdapter.ToModel).ToList());
 }

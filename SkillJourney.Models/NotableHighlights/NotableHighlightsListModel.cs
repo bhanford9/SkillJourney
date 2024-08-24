@@ -6,6 +6,8 @@ namespace SkillJourney.Models.NotableHighlights;
 
 public interface INotableHighlightsListModel
 {
+    IReadOnlyList<INotableHighlightModel> NotableHighlights { get; }
+
     Task<INotableHighlightModel> CreateNotableHighlightForUser(
         IUserModel receivingUser,
         int significanceRating,
@@ -24,7 +26,10 @@ internal class NotableHighlightsListModel : INotableHighlightsListModel
     {
         this.notableHighlightsAdapter = notableHighlightsAdapter;
         this.currentUser = currentUser;
+        NotableHighlights = currentUser.CurrentUser.Highlights;
     }
+
+    public IReadOnlyList<INotableHighlightModel> NotableHighlights { get; }
 
     public Task<INotableHighlightModel> CreateNotableHighlightForUser(
         IUserModel receivingUser,
