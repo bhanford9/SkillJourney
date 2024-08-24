@@ -1,5 +1,5 @@
 ﻿namespace SkillJourney.Database.SkillRatings;
-internal enum SkillRatingValue
+public enum SkillRatingValue
 {
     Beginner = 1,
     AdvancedBeginner = 2,

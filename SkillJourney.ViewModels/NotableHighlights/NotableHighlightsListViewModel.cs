@@ -33,6 +33,7 @@ internal class NotableHighlightsListViewModel : ViewModel, INotableHighlightsLis
         this.notableHighlights = notableHighlights;
         this.viewModelFactory = viewModelFactory;
         this.dialogService = dialogService;
+        NotableHighlights = [..notableHighlights.NotableHighlights.Select(viewModelFactory.BuildNotableHighlight)];
     }
 
     public ObservableCollection<INotableHighlightViewModel> NotableHighlights { get; } = [];
