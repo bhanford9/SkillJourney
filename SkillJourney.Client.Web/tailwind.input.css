@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply font-serif;
+    }
+    @font-face {
+        font-family: "Roboto";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url(/Roboto.woff2) format('woff2');
+    }
+}
+
+@layer components {
+    .tab-button {
+        @apply inline-block px-4 py-3 text-sm font-medium text-center uppercase text-text-primary min-w-40;
+        @apply hover:bg-default-hover;
+    }
+
+    .tab-selected {
+        @apply text-primary hover:bg-primary-hover;
+        @apply border-b-primary border-b-2 border-solid;
+    }
+}

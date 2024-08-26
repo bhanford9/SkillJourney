@@ -1,0 +1,37 @@
+﻿<div class="flex flex-row justify-center bg-surface">
+    @foreach (var panel in panels)
+    {
+        <button
+            @onclick="() => SetActive(panel)"
+            class="tab-button @(panel.IsActive ? "tab-selected" : "")">
+            @panel.Text
+        </button>
+    }
+</div>
+
+<CascadingValue Value="@(this)" IsFixed="true">
+    @ChildContent
+</CascadingValue>
+
+@code {
+
+    [Parameter] public RenderFragment ChildContent { get; set; } = null!;
+
+    private readonly List<TabPanel> panels = [];
+
+    public void AddPanel(TabPanel panel)
+    {
+        panels.Add(panel);
+
+        if (panel.IsDefaultActive)
+            SetActive(panel);
+
+        StateHasChanged();
+    }
+
+    private void SetActive(TabPanel panel)
+    {
+        panels.ForEach(p => p.SetIsActive(p == panel));
+    }
+
+}

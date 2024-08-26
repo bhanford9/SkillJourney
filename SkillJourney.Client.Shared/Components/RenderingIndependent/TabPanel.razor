@@ -1,0 +1,31 @@
+﻿@if (IsActive)
+{
+    @ChildContent
+}
+
+@code {
+
+    [Parameter] public RenderFragment ChildContent { get; set; } = null!;
+    
+    [CascadingParameter] private Tabs? ParentTabs { get; set; }
+    
+    [Parameter] public bool IsDefaultActive { get; set; }
+    
+    [Parameter] public string Text { get; set; } = "";
+
+    public bool IsActive { get; private set; }
+    
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        
+        ParentTabs?.AddPanel(this);
+    }
+
+    public void SetIsActive(bool isActive)
+    {
+        IsActive = isActive;
+        StateHasChanged();
+    }
+
+}
