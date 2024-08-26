@@ -44,3 +44,12 @@ ExternalSource/**/packages
 
 #ignore MS Office Suite temp files
 ~$*
+
+#Ignore output of tailwind
+**/wwwroot/tailwind.css
+
+#Rider
+.idea
+
+#Do not ignore tailwind.exe
+!tailwindcss.exe
