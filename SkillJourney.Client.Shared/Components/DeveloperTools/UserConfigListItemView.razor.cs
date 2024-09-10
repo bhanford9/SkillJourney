@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using SkillJourney.ViewModels.DeveloperTools;
 
-namespace SkillJourney.Client.Shared.Components.RenderingIndependent.DeveloperTools;
+namespace SkillJourney.Client.Shared.Components.DeveloperTools;
 public partial class UserConfigListItemView : ComponentBase
 {
     [Parameter]

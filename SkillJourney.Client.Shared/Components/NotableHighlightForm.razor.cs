@@ -2,7 +2,7 @@
 using MudBlazor;
 using SkillJourney.ViewModels.NotableHighlights;
 
-namespace SkillJourney.Client.Shared.Components.RenderingIndependent;
+namespace SkillJourney.Client.Shared.Components;
 public partial class NotableHighlightForm : ComponentBase
 {
     [CascadingParameter]

@@ -2,7 +2,7 @@
 using SkillJourney.ViewModels;
 using SkillJourney.ViewModels.Users;
 
-namespace SkillJourney.Client.Shared.Components.RenderingIndependent;
+namespace SkillJourney.Client.Shared.Components;
 
 public partial class MainPage : ComponentBase
 {

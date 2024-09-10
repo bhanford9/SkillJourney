@@ -2,7 +2,7 @@
 using SkillJourney.ViewModels;
 using SkillJourney.ViewModels.Users;
 
-namespace SkillJourney.Client.Shared.Components.RenderingIndependent.DeveloperTools;
+namespace SkillJourney.Client.Shared.Components.DeveloperTools;
 public partial class UserConfigPageView : ComponentBase
 {
     [Inject]
