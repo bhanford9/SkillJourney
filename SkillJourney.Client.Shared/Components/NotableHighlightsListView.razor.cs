@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
 using SkillJourney.ViewModels.NotableHighlights;
 
-namespace SkillJourney.Client.Shared.Components.RenderingIndependent;
+namespace SkillJourney.Client.Shared.Components;
 public partial class NotableHighlightsListView : ComponentBase
 {
     [Inject]

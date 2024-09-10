@@ -1,6 +1,6 @@
 using CommunityToolkit.Mvvm.Messaging;
 using MudBlazor.Services;
-using SkillJourney.Client.Shared.Components.RenderingIndependent;
+using SkillJourney.Client.Shared.Components;
 using SkillJourney.Client.Web;
 using SkillJourney.ViewModels;
 
