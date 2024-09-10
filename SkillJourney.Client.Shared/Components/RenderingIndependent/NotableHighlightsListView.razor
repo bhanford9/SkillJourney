@@ -15,7 +15,7 @@
             <MudSpacer />
         </ToolBarContent>
         <Columns>
-            <PropertyColumn Property="x => x.DateOfOccurrence" Groupable="false" Title="Date of Occurrence" />
+            <PropertyColumn Property="@(x => x.DateOfOccurrence.ToString("M/dd/yyyy"))" Groupable="false" Title="Date of Occurrence" />
             <PropertyColumn Property="x => x.SignificanceRating" Title="Significance Rating" />
             <PropertyColumn Property="x => x.Description" Groupable="false" />
             <PropertyColumn Property="x => x.RelatedSkillsRollup" Title="Related Skills" />
