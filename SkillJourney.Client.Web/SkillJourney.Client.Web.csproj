@@ -16,15 +16,4 @@
     <ProjectReference Include="..\SkillJourney.ViewModels\SkillJourney.ViewModels.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="tailwind.input.css">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-
-  <Target Name="TailwindCSSBuild" BeforeTargets="Build">
-    <Exec Command="dir ." WorkingDirectory="$(MSBuildProjectDirectory)" />
-    <Exec Command=".\tailwindcss.exe -i tailwind.input.css -o wwwroot/tailwind.css" WorkingDirectory="$(MSBuildProjectDirectory)" />
-  </Target>
-
 </Project>

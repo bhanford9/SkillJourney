@@ -18,4 +18,10 @@
     <ProjectReference Include="..\SkillJourney.Client.Shared\SkillJourney.Client.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Include="..\SkillJourney.Client.Shared\wwwroot\**" LinkBase="wwwroot">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>
