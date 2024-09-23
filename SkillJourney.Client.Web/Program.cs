@@ -1,4 +1,5 @@
 using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.Extensions.FileProviders;
 using MudBlazor.Services;
 using SkillJourney.Client.Shared.Components;
 using SkillJourney.Client.Web;
@@ -26,7 +27,12 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+var sharedRootPath = builder.Environment.WebRootPath.Replace("SkillJourney.Client.Web", "SkillJourney.Client.Shared");
 app.UseStaticFiles();
+app.UseStaticFiles( new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(sharedRootPath),
+});
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
